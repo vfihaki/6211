@@ -28,12 +28,17 @@ namespace Queue_Stack
                     Console.WriteLine($"Name: {q1.Dequeue()}");
                 }
             }*/
-            for (int i = 0; i < 10; i++)
-            {
+            while(true)
+            { 
                 Console.Write("Please enter a name: ");
                 q1.Enqueue(Console.ReadLine());
+                Console.Write("Would you like add another name (y/n): ");
+                if (Console.ReadLine().ToLower() == "n")
+                {
+                    break;
+                }
             }
-
+            Console.Clear();
             Console.Write("Please enter a name to search for: ");
             string name = Console.ReadLine();
 
@@ -42,21 +47,21 @@ namespace Queue_Stack
                 int counter = q1.Count;
                 for (int i = 0; i < counter; i++)
                 {
-                    if ((q1.Peek().ToString())!= name)
+                    if ((q1.Dequeue().ToString())!= name)
                     {
-                        q1.Dequeue();
+                        Console.WriteLine($"{name} was found in the collection");
                     }
                     else
                         break;
                 }
             }
             else
-                Console.Write($"{name} was not found in the collection....");
+                Console.Write($"{name} was not found in the collection....\n");
             foreach (object x in q1)
             {
-                Console.WriteLine($"{x}\n");
+                Console.WriteLine($"{x}");
             }
-            Console.ReadLine();
+           
         }
     }
 }
